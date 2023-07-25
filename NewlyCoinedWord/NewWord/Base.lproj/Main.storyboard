@@ -137,10 +137,14 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="firstButton" destination="uyf-Pb-3XR" id="kAZ-2c-Yqa"/>
+                        <outlet property="fourthButton" destination="Ta0-7g-eio" id="rgu-2C-iYp"/>
                         <outlet property="resultImageView" destination="oxz-0j-kZV" id="4um-lL-Yw8"/>
                         <outlet property="resultLabel" destination="Y2k-BS-Ui8" id="EYI-3g-qmi"/>
                         <outlet property="searchButton" destination="akX-s7-mTt" id="27G-H4-TUG"/>
                         <outlet property="searchTextField" destination="ui1-VC-7zr" id="4ZQ-Zr-M8Q"/>
+                        <outlet property="secondButton" destination="r8x-Ez-dqM" id="wXd-pn-tss"/>
+                        <outlet property="thirdButton" destination="Z61-fU-zTU" id="Vu4-VJ-9TC"/>
                         <outletCollection property="wordButtons" destination="uyf-Pb-3XR" collectionClass="NSMutableArray" id="ZGx-1B-W9S"/>
                         <outletCollection property="wordButtons" destination="r8x-Ez-dqM" collectionClass="NSMutableArray" id="Hw5-Jc-2QS"/>
                         <outletCollection property="wordButtons" destination="Z61-fU-zTU" collectionClass="NSMutableArray" id="xZB-kI-QIm"/>
