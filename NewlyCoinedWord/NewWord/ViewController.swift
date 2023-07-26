@@ -87,7 +87,7 @@ class ViewController: UIViewController {
     @IBAction func wordExampleTapped(_ sender: [UIButton]) {
         let shuffledWords = newWord.keys.shuffled()
         for i in wordButtons {
-            i.setTitle(shuffledWords[i.tag - 1], for: .normal)
+            i.setTitle(shuffledWords[i.tag], for: .normal)
         }
     }
     
