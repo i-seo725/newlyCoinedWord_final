@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         designTextField()
         designSearchButton()
         //        makeRandomButton()
-        wordExampleTapped(wordButtons)
+        showRandomKeyword(wordButtons)
         //        firstButton.isHidden = true
     }
     
@@ -84,7 +84,7 @@ class ViewController: UIViewController {
     //
     //    }
     
-    @IBAction func wordExampleTapped(_ sender: [UIButton]) {
+    @IBAction func showRandomKeyword(_ sender: [UIButton]) {
         let shuffledWords = newWord.keys.shuffled()
         for i in wordButtons {
             i.setTitle(shuffledWords[i.tag], for: .normal)
@@ -96,45 +96,56 @@ class ViewController: UIViewController {
         searchTextField.text = sender.currentTitle
         typeWordTextField(searchTextField)
         //        makeRandomButton()
-        wordExampleTapped(wordButtons)
+        showRandomKeyword(wordButtons)
     }
     
     func searchAction() {
         resultImageView.image = UIImage(named: "background")
+        guard let textCount = searchTextField.text?.count, let typedText = searchTextField.text else {
+            makeAlert()
+            resultLabel.text = "잘못된 검색어입니다."
+            return
+        }
+        if textCount < 2 {
+            makeAlert()
+            resultLabel.text = "잘못된 검색어입니다."
+        } else {
             for i in newWord.keys {
-                if searchTextField.text! == i {
+                if typedText == i {
                     resultLabel.text = "\"\(i)\"의 뜻은 \n\"\(newWord[i]!)\"입니다."
                     break
                 } else {
                     resultLabel.text = "입력하신 단어는 \n 사전에 존재하지 않습니다."
                 }
+                
             }
-        wordExampleTapped(wordButtons)
+        }
+        showRandomKeyword(wordButtons)
         view.endEditing(true)
     }
     
-//    @IBAction func searchButtonClicked(_ sender: UIButton) {
-//        let typedTextCount = searchTextField.text
-//        guard let typedCount = searchTextField.text?.count else {
-//                makeAlert()
-//                return
-//        }
-//        if typedCount >= 2 {
-//            for i in newWord.keys {
-//                if searchTextField.text! == i {
-//                    resultLabel.text = "\"\(i)\"의 뜻은 \n\"\(newWord[i]!)\"입니다."
-//                    break
-//                } else {
-//                    resultLabel.text = "입력하신 단어는 \n 사전에 존재하지 않습니다."
-//                }
-//            }
-//
-//
-//        } else {
-//        makeAlert()
-//            return
-//        }
-//    }
+    //    @IBAction func searchButtonClicked(_ sender: UIButton) {
+    //        let typedTextCount = searchTextField.text
+    //        guard let typedCount = searchTextField.text?.count else {
+    //                makeAlert()
+    //                return
+    //        }
+    //        if typedCount >= 2 {
+    //            for i in newWord.keys {
+    //                if searchTextField.text! == i {
+    //                    resultLabel.text = "\"\(i)\"의 뜻은 \n\"\(newWord[i]!)\"입니다."
+    //                    break
+    //                } else {
+    //                    resultLabel.text = "입력하신 단어는 \n 사전에 존재하지 않습니다."
+    //                }
+    //            }
+    //
+    //
+    //        } else {
+    //        makeAlert()
+    //            return
+    //        }
+    //    }
     
     @IBAction func typeWordTextField(_ sender: Any) {
         
